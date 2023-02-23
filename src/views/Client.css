@@ -1,0 +1,40 @@
+.client {
+    /* max-width: 500px; */
+    margin: auto;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.client > * {
+    padding: 5px;
+}
+
+.client .clientData {
+    max-width: 500px;
+    margin: auto;
+    font-weight: 500;
+}
+
+.client .clientData .btn {
+    width: 75px;
+    height: 25px;
+    font-weight: 600;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(135, 139, 139);
+}
+
+.client .clientData .btn:hover {
+    cursor: pointer;
+    font-weight: 800;
+}
+
+.client .clientData .btn-edit:hover {
+    background-color: rgb(28, 161, 34);
+}
+
+.client .clientData .btn-delete:hover {
+    background-color: rgb(175, 25, 14);
+}

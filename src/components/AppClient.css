@@ -1,0 +1,30 @@
+.client {
+    display: block;
+    border: 1px solid black;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.client > * {
+    padding: 5px;
+}
+
+.client .clientData {
+    font-weight: 500;
+}
+
+.btn {
+    width: 75px;
+    height: 25px;
+    font-weight: 600;
+    margin: 5px 0;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(135, 139, 139);
+}
+
+.btn:hover {
+    background-color: rgb(35, 176, 201);
+    cursor: pointer;
+    font-weight: 800;
+}
