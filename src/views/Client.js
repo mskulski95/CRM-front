@@ -30,7 +30,7 @@ const Client = () => {
             axios
                 .delete(config.api.url + '/client/delete/' + id)
                 .then((req, res) => {
-                    if(req.data.deleted) {
+                    if (req.data.deleted) {
                         navigate('/');
                     } else {
                         return;
@@ -46,15 +46,15 @@ const Client = () => {
 
     return (
         <div className="container">
-            <div className="client">
-                <div className="clientData">
+            <div className="clientGet">
+                <div className="clientDataGet">
                     <div className="name">Imię: {singleClient.name}</div>
                     <div className="city">Miasto: {singleClient.city}</div>
                     <div className="street">Ulica: {singleClient.street}</div>
                     <div className="zipcode">Kod pocztowy: {singleClient.zipCode}</div>
                     <div className="nip">NIP: {singleClient.nip}</div>
                     <div className="tel">Numer Tel.: {singleClient.tel}</div>
-                    <button className='btn btn-edit'>Edit</button>
+                    <button className='btn btn-edit' onClick={() => { navigate('/client/edit/' + id) }}>Edit</button>
                     <button className='btn btn-delete' onClick={() => { deleteClient() }}>Delete</button>
                 </div>
             </div>
