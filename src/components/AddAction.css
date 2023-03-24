@@ -1,0 +1,18 @@
+form {
+    max-width: 500px;
+    margin: auto;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+form input, textarea {
+    width: 75%;
+    padding: 5px;
+}
+
+form .btn:hover {
+    background-color: rgb(28, 161, 34);
+    cursor: pointer;
+    font-weight: 800;
+}

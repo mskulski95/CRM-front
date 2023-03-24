@@ -3,8 +3,9 @@ import axios from 'axios';
 import './Home.css';
 import config from '../config'
 import AppClient from '../components/AppClient';
+import { Navigate } from 'react-router';
 
-const Home = () => {
+const Home = (props) => {
     const [clients, setClients] = useState([]);
 
     useEffect(() => {
@@ -16,7 +17,6 @@ const Home = () => {
             .get(config.api.url + '/client')
             .then((req, res) => {
                 setClients(req.data);
-                console.log(req.data);
             })
             .catch((err) => {
                 console.error(err);
@@ -26,6 +26,7 @@ const Home = () => {
 
     return (
         <div className="home">
+            {!props.user && <Navigate to='/login' />}
             <div className="clientList">
                 {clients.map((client) => {
                     return<AppClient client={client} key={client._id}/>

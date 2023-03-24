@@ -6,45 +6,65 @@ import config from "../config";
 
 const EditClient = () => {
 
-    const {id} = useParams();
+    const {id} = useParams()
+    const navigate = useNavigate()
 
-    const [updateClient, setUpdateClient] = useState('');
+    const [nameUpdateClient, setNameUpdateClient] = useState('')
     const [cityUpdateClient, setCityUpdateClient] = useState('')
-    const [streeUpdateClient, setStreeUpdateClient] = useState('')
+    const [streetUpdateClient, setStreetUpdateClient] = useState('')
     const [zipCodeUpdateClient, setZipCodeUpdateClient] = useState('')
     const [nipUpdateClient, setNipUpdateClient] = useState('')
     const [telUpdateClient, setTelUpdateClient] = useState('')
 
-    useEffect(() => {
-        getUpdateClient();
-    }, []);
-
-    const getUpdateClient = () => {
+    const updatedClient = () => {
         axios
-        .put(config.api.url + '/client/edit/' + id)
+        .get(config.api.url + '/client/' + id)
         .then((req, res) => {
-            setUpdateClient(req.data.name);
+            setNameUpdateClient(req.data.name);
             setCityUpdateClient(req.data.city);
-            setStreeUpdateClient(req.data.street);
+            setStreetUpdateClient(req.data.street);
             setZipCodeUpdateClient(req.data.zipCode);
             setNipUpdateClient(req.data.nip);
-            setTelUpdateClient(req.data.tel);
+            setTelUpdateClient(req.data.tel);  
         })
         .catch((err) => {
             console.error(err);
         })
     }
 
-    const navigate = useNavigate()
+    useEffect(() => {
+        updatedClient()
+    }, []);
+
+    const getUpdateClient = (e) => {
+        e.preventDefault();
+
+        axios
+        .put(config.api.url + '/client/edit/' + id, {
+            name: nameUpdateClient,
+            city: cityUpdateClient,
+            street: streetUpdateClient,
+            zipCode: zipCodeUpdateClient,
+            nip: nipUpdateClient,
+            tel: telUpdateClient
+        })
+        .then((req, res) => {
+            navigate('/client/' +id)
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+    }
+
     return (
         <form className='editClient' onSubmit={getUpdateClient}>
-                <input type="text" name='name' placeholder='Name' onChange={(e)=>setUpdateClient(e.target.value)} value={updateClient} /><br/>
+                <input type="text" name='name' placeholder='Name' onChange={(e)=>setNameUpdateClient(e.target.value)} value={nameUpdateClient} /><br/>
                 <input type="text" name='city' placeholder='City' onChange={(e)=>setCityUpdateClient(e.target.value)} value={cityUpdateClient} /><br/>
-                <input type="text" name='street' placeholder='Street' onChange={(e)=>setStreeUpdateClient(e.target.value)} value={streeUpdateClient} /><br/>
+                <input type="text" name='street' placeholder='Street' onChange={(e)=>setStreetUpdateClient(e.target.value)} value={streetUpdateClient} /><br/>
                 <input type="text" name='zipcode' placeholder='ZipCode' onChange={(e)=>setZipCodeUpdateClient(e.target.value)} value={zipCodeUpdateClient} /><br/>
                 <input type="text" name='nip' placeholder='Nip' onChange={(e)=>setNipUpdateClient(e.target.value)} value={nipUpdateClient} /><br/>
                 <input type="text" name='phone' placeholder='Tel' onChange={(e)=>setTelUpdateClient(e.target.value)} value={telUpdateClient} /><br/>
-                <button className='btn' onClick={() => { navigate('/') }}>Save</button>
+                <button className='btn'>Save</button>
         </form>
     )
 }

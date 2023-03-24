@@ -3,12 +3,21 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import config from "../config";
+import Action from '../components/Action'
 
 const Client = () => {
 
     const { id } = useParams();
 
-    const [singleClient, setSingleClient] = useState({});
+    const [singleClient, setSingleClient] = useState({
+        actions:[],
+        name:'',
+        city: '',
+        street: '',
+        zipCode: '',
+        nip: '',
+        tel:''
+    });
 
     useEffect(() => {
         getClient();
@@ -57,7 +66,11 @@ const Client = () => {
                     <button className='btn btn-edit' onClick={() => { navigate('/client/edit/' + id) }}>Edit</button>
                     <button className='btn btn-delete' onClick={() => { deleteClient() }}>Delete</button>
                 </div>
+                
             </div>
+            <div className="clientAction">
+                    <Action getClient={getClient} actions={singleClient.actions}/>
+                </div>
         </div>
     )
 }

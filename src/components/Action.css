@@ -1,0 +1,31 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 50px;
+}
+
+tr:nth-of-type(odd) {
+    background-color: rgb(230, 233, 232);
+    color: #333;
+}
+
+th {
+    background-color: #241d1d;
+    color: #fff;
+}
+
+td, th {
+   padding: 6px;
+   border: 1px solid #ccc; 
+}
+
+td .btn-delete:hover {
+    background-color: rgb(175, 25, 14);
+}
+.container .btn-add {
+    width: 100px;
+    height: 40px;
+}
+.container .btn-add:hover {
+background-color: rgb(28, 161, 34);
+}

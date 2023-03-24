@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { Navigate, useNavigate } from 'react-router';
 import config from '../config';
 import './AddClient.css'
 
@@ -51,6 +51,7 @@ const AddClient = (props) => {
     const navigate = useNavigate();
     return (
         <form className='addClient' onSubmit={addClient}>
+            {!props.user && <Navigate to='/login' />}
             {errMessage && <h2>{errMessage}</h2>}
                 <input type="text" name='name' placeholder='Name' onChange={(e)=>setNameContent(e.target.value)} value={nameContent} /><br/>
                 <input type="text" name='city' placeholder='City' onChange={(e)=>setCityContent(e.target.value)} value={cityContent} /><br/>
