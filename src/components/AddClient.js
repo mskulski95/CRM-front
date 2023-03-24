@@ -13,11 +13,12 @@ const AddClient = (props) => {
     const [nipContent, setNipContent] = useState('')
     const [telContent, setTelContent] = useState('')
     const [errMessage, setErrMessage] = useState('')
+
+    const navigate = useNavigate();
     
 
     const addClient = (e) => {
         e.preventDefault();
-
 
 
         if(!nameContent, !cityContent, !streetContent, !zipCodeContent, !nipContent, !telContent) {
@@ -48,7 +49,7 @@ const AddClient = (props) => {
         })
     }
 
-    const navigate = useNavigate();
+
     return (
         <form className='addClient' onSubmit={addClient}>
             {!props.user && <Navigate to='/login' />}
